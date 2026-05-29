@@ -1,0 +1,44 @@
+npx create-react-app medical-ai-consultant
+cd medical-ai-consultant
+npm install axios framer-motion lucide-react
+# Tailwind CSS install karein
+import React, { useState } from 'react';
+import { motion } from 'framer-motion';
+
+function App() {
+  const [step, setStep] = useState(1);
+  const [userData, setUserData] = useState({ age: '', gender: '', conditions: '', allergies: '' });
+  const [chat, setChat] = useState([]);
+
+  // Mock API Call function (Isse backend se replace karein)
+  const getAIResponse = async (input) => {
+    // OpenRouter API call yahan aayega
+    console.log("Fetching from OpenRouter...");
+  };
+
+  return (
+    <div className="min-h-screen bg-slate-50 font-sans text-slate-900">
+      {/* Hospital Theme Navbar */}
+      <nav className="p-6 bg-blue-900 text-white shadow-lg">
+        <h1 className="text-2xl font-bold">MediCare AI Consultant</h1>
+      </nav>
+
+      <main className="container mx-auto p-4 mt-10">
+        {step === 1 && (
+          <div className="text-center">
+            <h2 className="text-4xl mb-4">Welcome to Medical AI</h2>
+            <button onClick={() => setStep(2)} className="bg-blue-600 text-white px-8 py-3 rounded-lg">Consult Now</button>
+          </div>
+        )}
+
+        {/* Baki steps yahan render honge */}
+      </main>
+
+      {/* Persistent Disclaimer */}
+      <footer className="fixed bottom-0 w-full bg-red-100 p-4 text-center text-red-800 border-t border-red-200">
+        <p><strong>Disclaimer:</strong> This is an AI consultant. For serious medical emergencies, go to the nearest hospital immediately. <strong>Emergency: 108</strong></p>
+      </footer>
+    </div>
+  );
+}
+export default App;
